@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       
+       
+	
+<!--////////////////////////////////////////////////////////////////////////////////////////
+                                      error handling related
+//////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<bean name="/uncaught-error.html"
+	class="no.jorundnydal.deicer.controller.ErrorController">
+</bean>
+
+<bean name="/http-error.html"
+	class="no.jorundnydal.deicer.controller.ErrorController">
+</bean>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////
+                                      user related
+//////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<bean name="/list_admins.html"
+	class="no.jorundnydal.deicer.controller.admin.AdminListController">
+<property name="userService" ref="userService" />
+</bean>
+
+<bean name="/new_admin.html"
+	class="no.jorundnydal.deicer.controller.admin.AdminNewController">
+<property name="commandClass" value="no.jorundnydal.deicer.entity.User" />
+<property name="formView" value="admin/adminNew" />
+<property name="successView" value="list_admins.html" />
+<property name="validator">
+<bean class="no.jorundnydal.deicer.controller.admin.validator.AdminValidator" />
+</property>
+<property name="userService" ref="userService" />
+</bean>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////
+                                      authentication related
+//////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<bean name="/logout.html"
+	class="no.jorundnydal.deicer.controller.authentication.LogoutController" />
+
+<bean name="/login.html"
+	class="no.jorundnydal.deicer.controller.authentication.LoginController">
+<property name="commandClass"
+	value="no.jorundnydal.deicer.entity.LoginData" />
+<property name="formView" value="authentication/login" />
+<property name="successView" value="news.html" />
+<property name="validator">
+<bean class="no.jorundnydal.deicer.controller.authentication.validator.LoginValidator" />
+</property>
+<property name="userService" ref="userService" />
+</bean>
+
+<bean name="/admin_console.html"
+	class="no.jorundnydal.deicer.controller.admin.ConsoleController">
+<property name="postService" ref="postService" />
+<property name="userService" ref="userService" />
+</bean>
+
+<bean name="/reset_password.html"
+	class="no.jorundnydal.deicer.controller.authentication.ResetPasswordController">
+<property name="userService" ref="userService" />
+</bean>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////
+                                      post related
+//////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<bean name="/news.html"
+	class="no.jorundnydal.deicer.controller.post.NewsController">
+<property name="postService" ref="postService" />
+</bean>
+
+<bean name="/delete_post.html"
+	class="no.jorundnydal.deicer.controller.post.PostDeleteController">
+<property name="postService" ref="postService" />
+</bean>
+
+<bean name="/new_post.html"
+	class="no.jorundnydal.deicer.controller.post.PostNewController">
+<property name="postService" ref="postService" />
+<property name="userService" ref="userService" />
+</bean>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////
+                                      page related
+//////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<bean name="/page.html"
+	class="no.jorundnydal.deicer.controller.page.PageController">
+<property name="pageService" ref="pageService" />
+</bean>
+
+<bean name="/delete_page.html"
+	class="no.jorundnydal.deicer.controller.page.PageDeleteController">
+<property name="pageService" ref="pageService" />
+</bean>
+
+<bean name="/new_page.html"
+	class="no.jorundnydal.deicer.controller.page.PageNewController">
+<property name="commandClass" value="no.jorundnydal.deicer.entity.Page" />
+<property name="formView" value="page/pageNew" />
+<property name="successView" value="admin_console.html" />
+<property name="validator">
+<bean class="no.jorundnydal.deicer.controller.page.validator.PageValidator" />
+</property>
+<property name="pageService" ref="pageService" />
+</bean>
+
+<bean name="/edit_page.html"
+	class="no.jorundnydal.deicer.controller.page.PageEditController">
+<property name="commandClass" value="no.jorundnydal.deicer.entity.Page" />
+<property name="formView" value="page/pageEdit" />
+<property name="successView" value="page.html" />
+<property name="validator">
+<bean class="no.jorundnydal.deicer.controller.page.validator.PageValidator" />
+</property>
+<property name="pageService" ref="pageService" />
+</bean>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////
+                                      product related
+//////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<bean name="/new_product.html"
+	class="no.jorundnydal.deicer.shop.controller.product.ProductNewController">
+<property name="commandClass" value="no.jorundnydal.deicer.shop.entity.Product" />
+<property name="formView" value="product/productNew" />
+<property name="successView" value="upload.html" />
+<property name="validator">
+<bean class="no.jorundnydal.deicer.shop.controller.product.validator.ProductValidator" />
+</property>
+<property name="categoryService" ref="categoryService" />
+</bean>
+
+<bean name="/upload.html"
+	class="no.jorundnydal.deicer.controller.file.UploadController">
+</bean>
+
+<bean name="/file.html"
+	class="no.jorundnydal.deicer.controller.file.FileController">
+</bean>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////
+                                      category related
+//////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<bean name="/new_category.html"
+	class="no.jorundnydal.deicer.shop.controller.category.CategoryNewController">
+<property name="commandClass" value="no.jorundnydal.deicer.shop.entity.Category" />
+<property name="formView" value="category/categoryNew" />
+<property name="successView" value="category.html" />
+<property name="validator">
+<bean class="no.jorundnydal.deicer.shop.controller.category.validator.CategoryValidator" />
+</property>
+<property name="categoryService" ref="categoryService" />
+</bean>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////
+                                      view related
+//////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<bean id="viewResolver"
+	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!-- <property name="exposeContextBeansAsAttributes" value="true"/> -->
+<property name="viewClass"
+	value="org.springframework.web.servlet.view.JstlView" />
+<property name="prefix" value="/jsp/" />
+<property name="suffix" value=".jsp" />
+</bean>
+
+</beans>

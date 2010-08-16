@@ -1,0 +1,266 @@
+/*
+* stylesheet deicer
+*/
+
+body {
+	
+	font-family: Arial, Sans-Serif;
+    font-size: 12px;
+	background-color: #000;
+	color: #333;
+	text-align: center;
+	background-attachment: fixed;
+	margin: 0;
+	padding: 0;
+	
+}
+
+img.bg {
+	/* Set rules to fill background */
+	min-height: 100%;
+	min-width: 1024px;
+
+	/* Set up proportionate scaling */
+	width: 100%;
+	height: auto;
+
+	/* Set up positioning */
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+@media screen and (max-width: 1024px){
+	img.bg {
+		left: 50%;
+		margin-left: -512px; }
+}
+
+#page_wrapper {
+	
+		/* This is the only important rule */
+	/* We need our content to show up on top of the background */
+	position: relative; 
+
+	/* These have no effect on the functionality */
+	-moz-box-shadow: #000 0px 0px 40px;
+	-webkit-box-shadow: #000 0px 0px 40px;	
+	text-align: left;
+	margin: 20px auto;
+	width: 900px;
+	background-color: #fff;
+	/*height: 100%;*/
+	border: 1px solid #777;
+}
+
+#header {
+	float: left;
+	width: 100%;
+	height: 220px;
+	position: relative;
+}
+
+#footer {
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+	background-color: #888;
+	color: #fff;
+	text-align: center;
+}
+
+#session_info {
+	right: 3px;
+	top: 3px;
+	color: #aaa;
+	position: absolute;
+}
+
+.insert_link {
+	color: #FF6600 !important;
+	border: 2px dotted #FF6600 !important;
+	padding:5px;
+}
+
+#add_post_link {
+	display: inline;
+	cursor: pointer;
+}
+
+h1,h2,h3 {
+	text-shadow: #aaaaaa 0.1em 0.1em 0.2em;
+}
+
+#top_logo {
+	width: 100%;
+	background-color: #FFBF00;
+	height: 160px;
+}
+
+#top_logo > h1{
+	position: absolute;
+	margin: 50px;
+}
+
+#login_block {
+	position: absolute;
+	right: 0px;
+	color: #ddd;
+	width: 450px;
+	height: 22px;
+	padding: 5px;
+}
+
+#login_block_transparancy {
+	background-color: #000;
+	position: absolute;
+	right: 0px;
+	width: 450px;
+	height: 22px;
+	opacity: 0.1;
+	border: 1px solid #eee;
+	padding: 5px;
+}
+
+#login_form {
+	float: left;
+}
+
+#login_block > a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 10px;
+}
+
+.current > a{
+	color: #fff !important;
+}
+
+#top_menu {
+	float: left;
+	width: 100%;
+	height: 60px;
+	text-shadow:3px 0px 3px #000;
+}
+
+#top_menu_transparancy {
+	background-color: #FFDC73;
+	position: absolute;
+	width: 100%;
+	height: 60px;
+	top: 160px;
+	left: 0;
+	opacity: 0.5;
+}
+
+#main_wrapper {
+	float: left;
+	width: 750px;
+	min-height: 768px;
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
+
+#col_right {
+	float: right;
+	width: 250px;
+}
+
+::selection {
+	background:#FF6600;
+	color:#fff;
+}
+
+::-moz-selection {
+	background:#FF6600;
+	color:#fff;
+}
+
+/*
+* news page related
+*
+*/
+
+.date_field {
+	font-size: 10px;
+}
+
+/*
+* misc
+*
+*/
+
+img {
+	border: 0;
+}
+
+a:link {
+	color: #888;
+}
+
+a:visited {
+	color: #777;
+}
+
+a:hover {
+	color: #ddd;
+}
+
+a:active {
+	color: #ccc;
+}
+
+/*
+* form styles
+*/
+
+/*
+* input fields 
+*/
+
+input[type="text"],input[type="password"]
+{
+    font-family: Arial, Sans-Serif;
+    font-size: 11px;
+    margin-bottom: 5px;
+    display: inline;
+    padding: 4px;
+    border: solid 1px #333;
+    width: 250px;
+    background-image: url( ../images/textfield_bg.png );
+    background-repeat: repeat-x;
+    background-position: top;
+}
+
+input[type="text"]:focus
+{
+    background-image: none;
+    background-color: #ffffff;
+    border: solid 1px #333;
+}
+
+.activeField
+{
+    background-image: none;
+    background-color: #ffffff;
+    border: solid 1px #33677F;
+}
+.idle
+{
+    border: solid 1px #85b1de;
+    background-image: url( 'blue_bg.png' );
+    background-repeat: repeat-x;
+    background-position: top;
+}
+
+.admin_options {
+	float: right;
+}
+
+.post {
+	height: 200px;
+}
+
+.page {
+	height: 700px;
+}

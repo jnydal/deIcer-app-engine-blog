@@ -1,0 +1,10 @@
+<!--
+<http use-expressions="true">
+    <intercept-url pattern="/" access="permitAll"/>
+    <intercept-url pattern="/static/**" filters="none" />
+    <intercept-url pattern="/**" access="isAuthenticated()" />
+    <form-login />
+    <logout />
+</http>
+-->
+

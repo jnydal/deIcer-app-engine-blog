@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+<!-- data access layer -->
+
+<bean id="postDAO" class="no.jorundnydal.deicer.dao.impl.PostJdoDaoImpl" />
+<bean id="pageDAO" class="no.jorundnydal.deicer.dao.impl.PageJdoDaoImpl" />
+<bean id="userDAO" class="no.jorundnydal.deicer.dao.impl.UserJdoDaoImpl" />
+<bean id="productDAO" class="no.jorundnydal.deicer.shop.dao.impl.ProductJdoDaoImpl" />
+<bean id="categoryDAO" class="no.jorundnydal.deicer.shop.dao.impl.CategoryJdoDaoImpl" />
+
+<!-- service layer -->
+
+<bean id="postService"
+	class="no.jorundnydal.deicer.service.impl.PostServiceImpl">
+<property name="postDAO" ref="postDAO" />
+</bean>
+<bean id="pageService"
+	class="no.jorundnydal.deicer.service.impl.PageServiceImpl">
+<property name="pageDAO" ref="pageDAO" />
+</bean>
+<bean id="userService"
+	class="no.jorundnydal.deicer.service.impl.UserServiceImpl">
+<property name="userDAO" ref="userDAO" />
+</bean>
+<bean id="productService"
+	class="no.jorundnydal.deicer.shop.service.impl.ProductServiceImpl">
+<property name="productDAO" ref="productDAO" />
+</bean>
+<bean id="categoryService"
+	class="no.jorundnydal.deicer.shop.service.impl.CategoryServiceImpl">
+<property name="categoryDAO" ref="categoryDAO" />
+</bean>
+
+<!-- buisness logic related -->
+
+<bean id="domain" class="no.jorundnydal.deicer.Domain">
+<constructor-arg index="0" type="java.lang.String" value="builtInPassword" />
+<constructor-arg index="1" type="java.lang.String" value="s@lt" />
+</bean>
+
+</beans>
+
